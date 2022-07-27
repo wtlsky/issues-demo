@@ -26,6 +26,8 @@ const ForkTsCheckerWebpackPlugin =
     : require('react-dev-utils/ForkTsCheckerWebpackPlugin');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
+const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
+
 const createEnvironmentHash = require('./webpack/persistentCache/createEnvironmentHash');
 
 // Source maps are resource heavy and can cause out of memory issue for large source files.
@@ -564,6 +566,7 @@ module.exports = function (webpackEnv) {
       ].filter(Boolean),
     },
     plugins: [
+      new MonacoWebpackPlugin(),
       // Generates an `index.html` file with the <script> injected.
       new HtmlWebpackPlugin(
         Object.assign(
