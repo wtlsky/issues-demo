@@ -1,0 +1,23 @@
+.navigate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  :global {
+    a {
+      width: 100px;
+      height: 100px;
+      border: 1px solid #c0c0c0;
+      display: block;
+      text-decoration: none;
+      text-align: center;
+      line-height: 100px;
+      margin: 10px;
+      color: blue;
+      &:hover {
+        color: #fff;
+        background-color: #d33332;
+      }
+    }
+  }
+}
