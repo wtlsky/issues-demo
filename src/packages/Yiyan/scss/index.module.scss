@@ -1,0 +1,39 @@
+.yi-yan {
+  position: relative;
+  height: 200px;
+  border-radius: 8px;
+  background-size: cover;
+  overflow: hidden;
+  :global {
+    .container {
+      padding: 20px;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      background-color: rgba(255, 255, 255, 0.6);
+    }
+    .content {
+      font-size: 30px;
+      font-weight: bold;
+      color: #000;
+      text-decoration: none;
+    }
+    .from {
+      text-align: right;
+    }
+    .footer {
+      width: 100%;
+      left: 0;
+      bottom: 0;
+      display: flex;
+      justify-content: space-between;
+      position: absolute;
+      padding: 0 20px 20px 20px;
+    }
+    .about {
+      color: gray;
+    }
+  }
+}

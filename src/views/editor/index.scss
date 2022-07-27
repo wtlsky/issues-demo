@@ -1,0 +1,21 @@
+.header {
+  height: 47px;
+  border-bottom: 1px solid #e6e6e8;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  .operate-list {
+    .btn {
+      & + .btn {
+        margin-left: 10px;
+      }
+    }
+  }
+}
+.container {
+  height: calc(100vh - 48px);
+  .ae-Editor {
+    height: 100%;
+  }
+}

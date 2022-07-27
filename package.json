@@ -4,11 +4,17 @@
   "private": true,
   "dependencies": {
     "@babel/core": "^7.16.0",
+    "@fortawesome/fontawesome-free": "^6.1.1",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.3",
     "@svgr/webpack": "^5.5.0",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
+    "amis": "^2.0.2",
+    "amis-core": "^2.0.2",
+    "amis-editor": "^5.1.9",
+    "amis-ui": "^2.0.2",
+    "axios": "^0.27.2",
     "babel-jest": "^27.4.2",
     "babel-loader": "^8.2.3",
     "babel-plugin-named-asset-import": "^0.3.8",
@@ -25,6 +31,7 @@
     "eslint-config-react-app": "^7.0.1",
     "eslint-webpack-plugin": "^3.1.1",
     "file-loader": "^6.2.0",
+    "froala-editor": "^4.0.13",
     "fs-extra": "^10.0.0",
     "html-webpack-plugin": "^5.5.0",
     "identity-obj-proxy": "^3.0.0",
@@ -43,6 +50,8 @@
     "react-dev-utils": "^12.0.1",
     "react-dom": "^18.2.0",
     "react-refresh": "^0.11.0",
+    "react-router-dom": "^6.3.0",
+    "react-scripts": "5.0.1",
     "resolve": "^1.20.0",
     "resolve-url-loader": "^4.0.0",
     "sass-loader": "^12.3.0",
@@ -51,6 +60,7 @@
     "style-loader": "^3.3.1",
     "tailwindcss": "^3.0.2",
     "terser-webpack-plugin": "^5.2.5",
+    "tslib": "^2.4.0",
     "web-vitals": "^2.1.4",
     "webpack": "^5.64.4",
     "webpack-dev-server": "^4.6.0",
@@ -66,7 +76,18 @@
     "extends": [
       "react-app",
       "react-app/jest"
-    ]
+    ],
+    "parserOptions": {
+      "babelOptions": {
+        "presets": [
+          [
+            "babel-preset-react-app",
+            false
+          ],
+          "babel-preset-react-app/prod"
+        ]
+      }
+    }
   },
   "browserslist": {
     "production": [
@@ -135,5 +156,9 @@
     "presets": [
       "react-app"
     ]
+  },
+  "devDependencies": {
+    "http-proxy-middleware": "^2.0.6",
+    "sass": "^1.54.0"
   }
 }

@@ -1,17 +1,27 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import ReactDOM from 'react-dom';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Spinner, ToastComponent, AlertComponent } from 'amis'
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+import Home from './views/home/index.js'
+
+import './index.css';
+
+const Viewer = React.lazy(() => import('./views/viewer/index.js'))
+const Editor = React.lazy(() => import('./views/editor/index.js'))
+
+ReactDOM.render(
+    <BrowserRouter>
+        <ToastComponent key="toast" />
+        <AlertComponent key="alert" />
+        <React.Suspense fallback={<Spinner overlay className="m-t-lg" size="lg" />}>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/viewer" element={<Viewer />} />
+                <Route path="/editor" element={<Editor />} />
+            </Routes>
+        </React.Suspense>
+    </BrowserRouter>,
+    document.getElementById('root')
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
