@@ -6,6 +6,8 @@ import style from './scss/plugin.module.scss'
 export default class YiyanPlugin extends BasePlugin {
   rendererName = 'yi-yan';
 
+  searchKeywords = '每日一句'
+
   // 暂时只支持这个，配置后会开启代码编辑器
   $schema = '/schemas/UnkownSchema.json';
 
