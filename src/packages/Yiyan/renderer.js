@@ -5,7 +5,9 @@ import { sentenceMap } from './enumType.js'
 
 export default class YiyanRenderer extends React.Component {
 
-  state = {}
+  state = {
+    data: {}
+  }
 
   componentDidMount () {
     this.getYiyan()
@@ -14,7 +16,7 @@ export default class YiyanRenderer extends React.Component {
   getYiyan () {
     const { env, link, sentence } = this.props
     env.fetcher({ url: link, data: { c: sentence } }).then(({ data }) => {
-      this.setState(data)
+      this.setState({ data })
     })
   }
 
@@ -26,7 +28,7 @@ export default class YiyanRenderer extends React.Component {
 
   render () {
     const { theme, showAbout, id } = this.props
-    const { hitokoto, from, from_who, type } = this.state
+    const { hitokoto, from, from_who, type } = this.state.data
     const about = () => (<a className='about' href="https://hitokoto.cn/about">关于一言</a>)
 
     return (
