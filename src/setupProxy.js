@@ -3,6 +3,12 @@ const { createProxyMiddleware } = require('http-proxy-middleware')
 
 module.exports = function (app) {
 
+  // 代理app模式下的存储服务
+  app.use(createProxyMiddleware('/sites', {
+    target: 'http://localhost:4000',
+    changeOrigin: true
+  }))
+
   // 代理测试服务器
   app.use(createProxyMiddleware('/proxy', {
     target: 'https://blue.wechatsi.com/',

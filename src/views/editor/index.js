@@ -21,6 +21,27 @@ class App extends React.Component {
     hasChange: false
   }
 
+  componentWillMount () {
+    const params = new URLSearchParams(window.location.search)
+    const type = params.get('type') || ''
+
+    if (type.toLowerCase() === 'page') {
+      this.setState({
+        data: {
+          type: 'page'
+        }
+      })
+    } else if (type.toLowerCase() === 'app') {
+      this.setState({
+        data: {
+          type: 'app',
+          brandName: '应用名称',
+          api: `/sites/hello.json`
+        }
+      })
+    }
+  }
+
   handleClick = () => {
     this.setState({
       preview: !this.state.preview

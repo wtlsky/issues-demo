@@ -37,7 +37,7 @@ export const env = {
   // 下面三个接口必须实现
   fetcher: ({
     url, // 接口地址
-    method, // 请求方法 get、post、put、delete
+    method = 'get', // 请求方法 get、post、put、delete
     data, // 请求数据
     responseType,
     config, // 其他配置
