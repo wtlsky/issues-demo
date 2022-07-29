@@ -1,18 +1,18 @@
 .yi-yan {
   position: relative;
-  height: 200px;
-  border-radius: 8px;
-  background-size: cover;
-  overflow: hidden;
   :global {
+    .card {
+      background-size: cover;
+      overflow: hidden;
+      border-radius: 8px;
+      position: relative;
+    }
     .container {
       padding: 20px;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      background-color: rgba(255, 255, 255, 0.6);
+      min-width: 400px;
+      height: 200px;
+      backdrop-filter: blur(7px);
+      background: rgba(255, 255, 255, 0.2);
     }
     .content {
       font-size: 30px;
@@ -24,13 +24,13 @@
       text-align: right;
     }
     .footer {
-      width: 100%;
-      left: 0;
-      bottom: 0;
       display: flex;
       justify-content: space-between;
       position: absolute;
-      padding: 0 20px 20px 20px;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      padding: 0 20px 20px;
     }
     .about {
       color: gray;
