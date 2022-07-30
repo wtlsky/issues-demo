@@ -1,12 +1,14 @@
 import React from 'react';
-import { Renderer } from 'amis';
+import { Renderer, Spinner } from 'amis';
+import { normalizeApi } from 'amis-core'
 import style from './scss/index.module.scss'
 import { sentenceMap } from './enumType.js'
 
 export default class YiyanRenderer extends React.Component {
 
   state = {
-    data: {}
+    data: {},
+    loading: false
   }
 
   componentDidMount () {
@@ -16,10 +18,14 @@ export default class YiyanRenderer extends React.Component {
     }
   }
 
-  getYiyan () {
+  getYiyan (val) {
     const { env, api, sentence } = this.props
-    env.fetcher(api, { c: sentence }).then(({ data }) => {
-      this.setState({ data })
+    const _api = normalizeApi(api)
+    this.setState({ loading: true })
+    env.fetcher({ ..._api, data: { c: val || sentence } }).then(({ data }) => {
+      this.setState({ data, loading: false })
+    }).catch(err => {
+      this.setState({ loading: false })
     })
   }
 
@@ -41,6 +47,7 @@ export default class YiyanRenderer extends React.Component {
             <div className='content'>{hitokoto}</div>
             <div className='from'>@{from}-{from_who || '佚名'}</div>
             <div className='footer'>
+              <Spinner show={this.state.loading}></Spinner>
               <div className='reviewer'>{sentenceMap[type] || '动画'}</div>
               {showAbout && about()}
             </div>

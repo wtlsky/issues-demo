@@ -108,15 +108,13 @@ export default class YiyanPlugin extends BasePlugin {
                   value: "l"
                 }
               ],
-              onEvent: {
-                change: {
-                  actions: [
-                    {
-                      actionType: "custom",
-                      script: this.handleSentenceChange.bind(this, context.id)
-                    }
-                  ]
-                }
+              onChange: (val, old, picker, action) => {
+                const id = context.id
+                const { manager } = this
+                const { store } = manager
+                const node = store.getNodeById(id);
+                const component = node.getComponent()
+                component.getYiyan(val) // renderer中定义的组件内部方法
               },
               inline: false,
               columnsCount: 2
@@ -144,13 +142,5 @@ export default class YiyanPlugin extends BasePlugin {
         },
       ])
     ];
-  }
-
-  handleSentenceChange (id) {
-    const { manager } = this
-    const { store } = manager
-    const node = store.getNodeById(id);
-    const component = node.getComponent()
-    component.getYiyan() // renderer中定义的组件内部方法
   }
 }
