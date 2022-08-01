@@ -1,15 +1,19 @@
 import React from 'react';
 import { toast, FormItem } from 'amis';
 import style from './index.module.scss'
+import Vue from 'vue'
+import Vtest from './index.vue'
 
-export default class VColorPickerRender extends React.Component {
+export default class VTestRenderer extends React.Component {
   constructor(props) {
     super(props)
     const { value } = props
-    const ColorPicker = window.Vue.extend(window.ELEMENT.ColorPicker)
-    const picker = new ColorPicker({ propsData: { value } })
-    picker.$on('change', this.handleColorChange.bind(this))
-    this.picker = picker
+    const COM = Vue.extend(Vtest)
+    this.picker = new COM({
+      propsData: {
+        value
+      }
+    })
     this.vueRoot = React.createRef();
   }
 
@@ -45,4 +49,4 @@ export default class VColorPickerRender extends React.Component {
   }
 }
 
-FormItem({ type: 'v-color-picker', autoVar: true })(VColorPickerRender)
+FormItem({ type: 'v-test', autoVar: true })(VTestRenderer)

@@ -2,10 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Spinner, ToastComponent, AlertComponent } from 'amis'
+import Vue from 'vue'
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
 
 import Home from './views/home/index.js'
 
 import './index.css';
+
+Vue.use(ElementUI)
 
 const Viewer = React.lazy(() => import('./views/viewer/index.js'))
 const Editor = React.lazy(() => import('./views/editor/index.js'))
